@@ -19,7 +19,7 @@ export default function handler(req, res) {
             latitude: req.query.lat,
             longitude: req.query.long,
             limit: 3,
-            radius: 10000,
+            radius: 5000,
             categories: food.code,
             open_now: true,
         }).then( (response) => {
