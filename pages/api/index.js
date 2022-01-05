@@ -27,7 +27,6 @@ export default function handler(req, res) {
                 return { name: restaurant.name, url: restaurant.url }
             })
             food = { ...food, urls: urls }
-
             res.status(200).json({ foodType:  food })
         }).catch(e => {
             res.status(200).json({ foodType:  food })

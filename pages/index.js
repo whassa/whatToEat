@@ -56,7 +56,7 @@ export default function Home() {
     }
 
   }
-  console.log(state);
+
   return (
     <div className="container">
       <div className={`loading ${state.loading ? '' : 'hide'}`}>
@@ -87,7 +87,7 @@ export default function Home() {
                   {state.food.name}
                 </h2>
                 { state.food.urls && state.food.urls.length > 0 && (<div className="food-url-text">Here is some place you could go :</div>)}
-                { state.food.urls.map( (restaurant) => (
+                { state.food.urls && state.food.urls.map( (restaurant) => (
                   <div key={restaurant.name} className="food-url">
                     <a href={restaurant.url} target="_blank" rel="noopener noreferrer"> {restaurant.name}</a> 
                   </div>
