@@ -13,7 +13,8 @@
     "react-dom": "17.0.2",
     "react-ripples": "^2.2.1",
     "react-toastify": "^8.1.0",
-    "sass": "^1.45.2"
+    "sass": "^1.45.2",
+    "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "8.6.0",

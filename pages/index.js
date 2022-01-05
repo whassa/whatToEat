@@ -31,10 +31,8 @@ function reducer(state, action) {
 export default function Home() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const findFood = async () => {
-    dispatch({type: 'FIND_FOOD_CLICKED'});
-
-    let response = await fetch('/api');
+  const findFood = async (position) => {
+    let response =  await fetch(position && !position.code ? '/api?'+ new URLSearchParams({long: position.coords.longitude, lat: position.coords.latitude}) : '/api');
     try {
       if (response.ok) {
         const result = await response.json();
@@ -49,6 +47,16 @@ export default function Home() {
     }
   }
 
+  const askLocation = async () => {
+    dispatch({type: 'FIND_FOOD_CLICKED'});
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(findFood, findFood);
+    } else {
+      findFood();
+    }
+
+  }
+  console.log(state);
   return (
     <div className="container">
       <div className={`loading ${state.loading ? '' : 'hide'}`}>
@@ -58,22 +66,36 @@ export default function Home() {
         <title>Whatoeat?</title>
         <meta name="title" content="What to eat?" />
         <meta name="description" content="Application that makes the hard decision for us and decide where to eat for the user. It also gives information on the some restaurant you could go eating." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="What to eat?"/>
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="html" />
+        <meta property="og:url" content="http://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
     
       <main className="main">
         <div className="content"> 
           <h1 className="title">
-            What to eat tonight ? 
+            What to eat ? 
           </h1>
           
           { state.food ? 
             (
               <>
                 <h2 className="food-title"> 
-                  {state.food}
+                  {state.food.name}
                 </h2>
-                <p className="description">
+                { state.food.urls && state.food.urls.length > 0 && (<div className="food-url-text">Here is some place you could go :</div>)}
+                { state.food.urls.map( (restaurant) => (
+                  <div key={restaurant.name} className="food-url">
+                    <a href={restaurant.url} target="_blank" rel="noopener noreferrer"> {restaurant.name}</a> 
+                  </div>
+                    
+                  ))
+                }
+
+                <p className={`description ${state.food && state.food.urls ? 'mt-5' : ''}`}>
                   Not satisfied ? You can retry by clicking the button below.
                 </p>
               </>
@@ -88,7 +110,7 @@ export default function Home() {
 
           <div className="buttons">
             <Ripples>
-              <button className="button ripple" onClick={findFood}>
+              <button className="button ripple" onClick={askLocation}>
                 Find me what food to eat!!!
               </button>
             </Ripples>

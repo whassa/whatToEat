@@ -38,11 +38,27 @@
     }
   }
 
+  .food-title {
+    margin-top: 0px;
+  }
+
+  .food-url {
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+
+  .food-url-text {
+    margin-left: 10px;
+  }
+
   .description {
     width: 100%;
     margin: 0px;
     margin-left: 10px;
     margin-bottom: 20px;
+  }
+  .description.mt-5 {
+    margin-top: 20px;
   }
 }
 
