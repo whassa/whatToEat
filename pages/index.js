@@ -55,7 +55,7 @@ export default function Home() {
         <div className="loading-text"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>
       </div>
       <Head>
-        <title>What to eat?</title>
+        <title>Whatoeat?</title>
         <meta name="title" content="What to eat?" />
         <meta name="description" content="Application that makes the hard decision for us and decide where to eat for the user. It also gives information on the some restaurant you could go eating." />
         <link rel="icon" href="/favicon.ico" />
