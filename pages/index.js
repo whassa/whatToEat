@@ -49,7 +49,7 @@ export default function Home() {
 
   const askLocation = async () => {
     dispatch({type: 'FIND_FOOD_CLICKED'});
-    if (navigator.geolocation) {
+    if ('geolocation' in navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(findFood, findFood);
     } else {
       findFood();
