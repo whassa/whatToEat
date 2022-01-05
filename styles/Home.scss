@@ -1,0 +1,64 @@
+.button {
+  background-color: $primary;
+  cursor: pointer;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all 0.1s ease;
+  &:hover {
+    background-color: $primary-light;
+  }
+}
+
+.main {
+  min-height: calc(100vh - 60px);
+}
+
+.content  {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: $sm) {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .title {
+    margin-top: 200px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    @media screen and (max-width: $sm) {
+      margin-top: 50px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .description {
+    width: 100%;
+    margin: 0px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+
+.footer {
+  height: 60px;
+
+  a {
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    .footer-text {
+      display: flex;
+      line-height: 20px;
+      align-items: center;
+      margin-right: 10px;
+    }
+  }
+}
