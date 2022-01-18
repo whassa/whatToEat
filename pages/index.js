@@ -67,11 +67,14 @@ export default function Home() {
         <meta name="title" content="What to eat?" />
         <meta name="description" content="Application that makes the hard decision for us and decide where to eat for the user. It also gives information on the some restaurant you could go eating." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+        <meta name="google" content="notranslate" key="notranslate" />
         <meta property="og:title" content="What to eat?"/>
         <meta property="og:type" content="article" />
         <meta property="og:image" content="html" />
         <meta property="og:url" content="http://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="all" />
       </Head>
     
       <main className="main">
