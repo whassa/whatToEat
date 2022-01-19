@@ -72,9 +72,12 @@ export default function Home() {
         <meta name="twitter:card" content="summary"></meta>
         <meta name="twitter:site" content="@whatoeat"></meta>
         <meta name="twitter:creator" content="Whassa"></meta>
+        <meta name="twitter:image" content="" />
         <meta property="og:title" content="What to eat?"/>
         <meta property="og:description" content="What to eat? is an application that makes the hard decision for us and decide where to eat for the user. It also gives suggestion of restaurants you could go eating." />
-        <meta property="og:image" content="/logo.jpg" />
+        <meta property="og:image" content="/static/images/logo.png" />
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
         <meta property="og:url" content="https://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="all" />
