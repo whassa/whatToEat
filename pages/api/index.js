@@ -23,6 +23,7 @@ export default function handler(req, res) {
             categories: food.code,
             open_now: true,
         }).then( (response) => {
+            console.log(response)
             const urls = response.jsonBody.businesses.map((restaurant) => {
                 return { name: restaurant.name, url: restaurant.url }
             })

@@ -12,18 +12,22 @@ import gitHubPic from '../public/GitHub.png'
 const initialState = {
   food: null,
   loading: false,
+  err: '',
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case 'FIND_FOOD_CLICKED':
-      return { ...state, loading: true};
+      return { ...state, loading: true, error: ''};
     case 'FOOD_FETCHED':
       return { ...state, food: action.food, loading: false };
     case 'FOOD_FETCH_ERROR':
       return { ...state, loading: false };
     case 'RETURN_MENU':
       return { ...state, loading: true};
+    case 'NO_GEO_LOCALISATION': 
+      return { ...state, error: action.error}
+    
   }
 }
 
@@ -32,17 +36,18 @@ export default function Home() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const findFood = async (position) => {
+    console.log(position)
     let response =  await fetch(position && !position.code ? '/api?'+ new URLSearchParams({long: position.coords.longitude, lat: position.coords.latitude}) : '/api');
     try {
       if (response.ok) {
         const result = await response.json();
-        dispatch({type: 'FOOD_FETCHED', food: result.foodType});
+        dispatch({type: 'FOOD_FETCHED', food: result.foodType });
       } else {
          toast.error('Error while finding the food. Please retry!', { theme: "colored" });
         dispatch({type: 'FOOD_FETCH_ERROR'});
       }
     } catch (e) {
-       toast.error('Error while finding the food. Please retry!', { theme: "colored" });
+      toast.error('Error while finding the food. Please retry!', { theme: "colored" });
       dispatch({type: 'FOOD_FETCH_ERROR'});
     }
   }
@@ -50,9 +55,14 @@ export default function Home() {
   const askLocation = async () => {
     dispatch({type: 'FIND_FOOD_CLICKED'});
     if ('geolocation' in navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(findFood, findFood);
+      navigator.geolocation.getCurrentPosition(findFood, () => {
+        dispatch({type: 'NO_GEO_LOCALISATION', error: 'Can\'t show recommendation. Please be sure to be in secure connection using https.'});
+        findFood();
+      });
     } else {
+      dispatch({type: 'NO_GEO_LOCALISATION', error: 'Can\'t show recommendations because your browser doesn\'t support Geolocation. (Facebook browser)'});
       findFood();
+
     }
 
   }
@@ -103,6 +113,13 @@ export default function Home() {
                     
                   ))
                 }
+                 { state.error && (
+                  <div className="food-error">
+                    {state.error}
+                  </div> 
+                  )
+                }
+
 
                 <p className={`description ${state.food && state.food.urls ? 'mt-5' : ''}`}>
                   Not satisfied ? You can retry by clicking the button below.
