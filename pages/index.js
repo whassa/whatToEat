@@ -36,7 +36,6 @@ export default function Home() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const findFood = async (position) => {
-    console.log(position)
     let response =  await fetch(position && !position.code ? '/api?'+ new URLSearchParams({long: position.coords.longitude, lat: position.coords.latitude}) : '/api');
     try {
       if (response.ok) {
@@ -91,6 +90,8 @@ export default function Home() {
         <meta property="og:url" content="https://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="all" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9115419313120187"
+          crossorigin="anonymous"></script>
       </Head>
     
       <main className="main">
