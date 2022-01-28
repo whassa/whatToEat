@@ -101,6 +101,7 @@ export default function Home({clientId, slot}) {
         <meta name="robots" content="all" />
         <script async src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+clientId}
           crossOrigin="anonymous"></script>
+          
       </Head>
     
       <main className="main">
@@ -152,7 +153,9 @@ export default function Home({clientId, slot}) {
             </Ripples>
           </div>
         </div>
-        <AdBanner clientId={clientId} slot={slot}/>
+        <div>
+           <AdBanner clientId={clientId} slot={slot}/>
+        </div>
       </main>
       <ToastContainer
         position="bottom-center"

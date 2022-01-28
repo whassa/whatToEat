@@ -8,9 +8,9 @@ const AdBanner = ({ clientId, slot }) => {
   }, []);
   return (
     <ins className="adsbygoogle"
-     style={{display: 'block', textAlign: 'center'}}
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
+     style={{display: 'block' }}
+     data-full-width-responsive="true"
+     data-ad-format="auto"
      data-ad-client={clientId}
      data-ad-slot={slot}></ins>
   
