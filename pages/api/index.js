@@ -3,7 +3,6 @@ import yelp from 'yelp-fusion';
 
 const client = yelp.client(process.env.YELP_CLIENT);
 
-
 const getFoodType = () => {
     return FoodType[Math.floor(Math.random() * FoodType.length)];
 }
@@ -23,7 +22,6 @@ export default function handler(req, res) {
             categories: food.code,
             open_now: true,
         }).then( (response) => {
-            console.log(response)
             const urls = response.jsonBody.businesses.map((restaurant) => {
                 return { name: restaurant.name, url: restaurant.url }
             })

@@ -1,6 +1,4 @@
 import { useReducer } from "react";
-
-
 import Head from 'next/head'
 import Image from 'next/image'
 import Ripples from 'react-ripples'
@@ -8,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import gitHubPic from '../public/GitHub.png'
+import AdBanner from "../component/AdBanner";
 
 const initialState = {
   food: null,
@@ -31,8 +30,17 @@ function reducer(state, action) {
   }
 }
 
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      clientId: process.env.GOOGLE_AD_SENSE_CLIENT,
+      slot: process.env.GOOGLE_AD_SENSE_SLOT,
+    },
+  }
+}
 
-export default function Home() {
+
+export default function Home({clientId, slot}) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const findFood = async (position) => {
@@ -50,6 +58,7 @@ export default function Home() {
       dispatch({type: 'FOOD_FETCH_ERROR'});
     }
   }
+
 
   const askLocation = async () => {
     dispatch({type: 'FIND_FOOD_CLICKED'});
@@ -90,8 +99,8 @@ export default function Home() {
         <meta property="og:url" content="https://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="all" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9115419313120187"
-          crossorigin="anonymous"></script>
+        <script async src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+clientId}
+          crossOrigin="anonymous"></script>
       </Head>
     
       <main className="main">
@@ -143,6 +152,7 @@ export default function Home() {
             </Ripples>
           </div>
         </div>
+        <AdBanner clientId={clientId} slot={slot}/>
       </main>
       <ToastContainer
         position="bottom-center"
