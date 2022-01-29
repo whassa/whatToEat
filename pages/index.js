@@ -99,9 +99,6 @@ export default function Home({clientId, slot}) {
         <meta property="og:url" content="https://whatoeat.ca" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="all" />
-        <script async src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+clientId}
-          crossOrigin="anonymous"></script>
-          
       </Head>
     
       <main className="main">
@@ -154,7 +151,7 @@ export default function Home({clientId, slot}) {
           </div>
         </div>
         <div>
-           <AdBanner clientId={clientId} slot={slot}/>
+           
         </div>
       </main>
       <ToastContainer
