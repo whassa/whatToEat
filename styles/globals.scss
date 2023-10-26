@@ -15,7 +15,14 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: $background-home;
+  background: $background-home url('/static/images/bg_1.jpg');
+  @media screen and (max-width: $md) {
+    background-position: center;
+  }
+
+  @media screen and (min-width: 1920px), (min-height: 1272px ) {
+    background-size: cover;
+  }
 }
 
 a {

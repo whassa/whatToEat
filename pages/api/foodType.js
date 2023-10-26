@@ -1,5 +1,5 @@
 // From yelp category list
-const FoodType = [
+export const YelpFoodType = [
     { name: 'Afghan', code:  'afghani'},
     { name: 'African', code:  'african'},
     { name: 'American', code:  'tradamerican'},
@@ -94,4 +94,28 @@ const FoodType = [
     { name: 'Vietnamese', code: 'vietnamese'},
 ]
 
-export default FoodType;
+export const EdamamFoodType = [ 
+    'american',
+    'asian',
+    'british',
+    'caribbean',
+    'central europe',
+    'chinese',
+    'eastern europe',
+    'french',
+    'greek',
+    'indian',
+    'italian',
+    'japanese',
+    'korean',
+    'kosher',
+    'mediterranean',
+    'mexican',
+    'middle eastern',
+    'nordic',
+    'south american',
+    'south east asian',
+    'world'
+];
+
+export default YelpFoodType;

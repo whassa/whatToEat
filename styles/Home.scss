@@ -1,3 +1,9 @@
+.buttons {
+  gap: 5px;
+  display: flex;
+  overflow: auto;
+  flex-wrap: wrap;
+}
 .button {
   background-color: $primary;
   cursor: pointer;
@@ -18,33 +24,82 @@
   min-height: calc(100vh - 70px);
 }
 
-.content  {
-  padding: 100px;
+.content {
+  display: flex;
+}
+
+.content-right {
+  width: 100%;
+  @media screen and (max-width: $lg) {
+   width: 0px;
+  }
+}
+
+.content-left {
+  height: 100%;
+  width: 100%;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 160px;
+  padding: 20px;
+
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  background-color: $background-home;
+
 
   @media screen and (max-width: $sm) {
-    padding-right: 20px;
-    padding-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 
   .title {
-    margin-top: 200px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 2.5rem;
+    margin-top: 20px;
     @media screen and (max-width: $sm) {
-      margin-top: 50px;
+      margin-top: 0px;
       font-size: 1.5rem;
     }
   }
 
   .food-title {
     margin-top: 0px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+
+  .food-restriction {
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .food-restriction-subtitle {
+    font-size: 1rem;
+  }
+
+
+  .food-restriction-options {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 7px;
+
+    @media screen and (max-width: $sm) {
+      font-size: 1rem;
+    }
+
+    label:not(:last-child) {
+      margin-right: 10px;
+    }
   }
 
   .food-url {
     margin-top: 5px;
     margin-left: 20px;
+    @media screen and (max-width: $xs) {
+      margin-left: 10px;
+    }
   }
 
   .food-error {
@@ -55,27 +110,35 @@
 
   .food-url-text {
     margin-left: 10px;
+    @media screen and (max-width: $xs) {
+      margin-left: 0px;
+    }
   }
 
   .description {
     width: 100%;
     margin: 0px;
-    margin-left: 10px;
-    margin-bottom: 20px;
+    margin: 20px 10px ;
+    @media screen and (max-width: $xs) {
+      margin-left: 0px;
+    }
   }
   .description.mt-5 {
     margin-top: 20px;
   }
 }
 
-
 .footer {
   height: 70px;
   padding-top: 10px;
+  display: flex;
+  justify-content: center;
   a {
     display: flex;
-    height: 32px;
-    justify-content: center;
+    height: 40px;
+    background-color: $background-home;
+    border-radius: 1000px;
+    padding: 5px 20px;
     .footer-text {
       display: flex;
       line-height: 20px;
